@@ -1,0 +1,6 @@
+{
+  "extends": "@majus/eslint-config-meteor",
+  "rules": {
+    "import/no-unresolved": "off"
+  }
+}

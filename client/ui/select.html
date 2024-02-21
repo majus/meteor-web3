@@ -1,0 +1,16 @@
+<template name="Web3AccountsSelect">
+  <div class="dropdown">
+    <a href="#" class="logged-user" data-toggle="dropdown">
+      <img src="https://robohash.org/0x9F329d6bad710155bc1fA84bdFB0d629Cf4f7FBc?bgset=bg1" alt="">
+      <span>{{shortHash Web3.currentAccount}}</span>
+      <i class="fa fa-angle-down"></i>
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+      <nav class="nav">
+        {{#each Web3.connectedAccounts}}
+          <a class="nav-link" href="#" data-action="selectAccount">{{shortHash this size=4}}</a>
+        {{/each}}
+      </nav>
+    </div>
+  </div>
+</template>

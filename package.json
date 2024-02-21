@@ -1,0 +1,33 @@
+{
+  "name": "meteor-web3",
+  "version": "0.0.1",
+  "description": "Essential toolkit for web3 application development",
+  "main": "index.js",
+  "scripts": {
+    "lint": "meteor npx eslint .",
+    "test": "meteor test-packages ./ --driver-package=meteortesting:mocha --once --raw-logs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/majus/meteor-web3.git"
+  },
+  "author": "Denis Perov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/majus/meteor-web3/issues"
+  },
+  "homepage": "https://github.com/majus/meteor-web3#readme",
+  "devDependencies": {
+    "@babel/core": "^7.23.9",
+    "@babel/eslint-parser": "^7.23.10",
+    "@majus/eslint-config-meteor": "^0.0.3",
+    "eslint": "^8.56.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-import-resolver-meteor": "^0.4.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-meteor": "^7.3.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0"
+  }
+}
