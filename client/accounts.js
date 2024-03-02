@@ -5,8 +5,8 @@ export const Web3Accounts = {
   provider: null,
   state: {
     connected: new ReactiveVar([]),
-    account: new ReactiveVar(),
-    network: new ReactiveVar(),
+    current: new ReactiveVar(null),
+    network: new ReactiveVar(null),
   },
   get isConnected() {
     return Boolean(this.connected.length > 0);
@@ -15,37 +15,54 @@ export const Web3Accounts = {
     return this.state.connected.get();
   },
   get current() {
-    return this.state.account.get();
+    return this.state.current.get();
   },
   set current(account) {
     if (!this.connected.includes(account)) {
       throw new Error(`Account ${account} is not connected`);
     }
-    this.state.account.set(account);
+    this.state.current.set(account);
   },
   get network() {
     return this.state.network.get();
+  },
+  async refresh() {
+    const [network, accounts] = await Promise.all([
+      this.provider.getNetwork(),
+      this.provider.listAccounts(),
+    ]);
+    if (network) {
+      this.state.network.set(network);
+    }
+    if (accounts) {
+      this.state.connected.set(accounts);
+      if (accounts.length > 0) {
+        // Auto select the first account
+        this.state.current.set(accounts[0]);
+      }
+    }
   },
   async init() {
     // Initialize once
     if (!this.provider) {
       const provider = Web3Factory.provider();
-      const [network, accounts] = await Promise.all([
-        provider.getNetwork(),
-        provider.listAccounts(),
-      ]);
-      if (network) {
-        this.state.network.set(network);
-      }
-      if (accounts) {
-        this.state.connected.set(accounts);
-        if (accounts.length > 0) {
-          // Auto select the first account
-          this.state.account.set(accounts[0]);
-        }
-      }
+      // EIP-1193
+      provider.on('connect', () => this.refresh());
+      // EIP-1193
+      provider.on('disconnect', () => {
+        this.state.current.set(null);
+        this.state.connected.set([]);
+      });
+      // EIP-1193
+      provider.on('chainChanged', (chainId) =>
+        this.state.network.set({ chainId }),
+      );
+      // EIP-1193
+      provider.on('accountsChanged', () => this.refresh());
+      // ???
       provider.on('network', (network) => this.state.network.set(network));
       this.provider = provider;
+      await this.refresh();
     }
   },
   async connect() {
