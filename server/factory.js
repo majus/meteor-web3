@@ -1,8 +1,8 @@
-import { Meteor } from 'meteor/meteor';
 import { ethers } from 'ethers';
+import { EthersSettings } from '../settings';
 
 export const Web3Factory = {
-  settings: Meteor.settings.Ethers,
+  settings: EthersSettings,
   provider() {
     return new ethers.providers.JsonRpcProvider(this.settings.rpcUrl);
   },

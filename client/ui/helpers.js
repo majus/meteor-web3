@@ -1,5 +1,5 @@
 import { Template } from 'meteor/templating';
-import { Web3Accounts } from './accounts';
+import { Web3Accounts } from '../accounts';
 
 Template.helpers({
   'Web3': () => ({

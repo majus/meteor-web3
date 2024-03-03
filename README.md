@@ -69,8 +69,10 @@ Firstly, you need to provide required settings:
 {
   "pacakges": {
     "majus:web3": {
-      "rpcUrl": "http://chain-rpc-server",
-      "key": "your-eoa-private-key"
+      "ethers": {
+        "rpcUrl": "http://chain-rpc-server",
+        "key": "your-eoa-private-key"
+      }
     }
   }
 }
