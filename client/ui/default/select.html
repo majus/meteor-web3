@@ -1,0 +1,7 @@
+<template name="web3/accountSelect/default">
+  <select data-action="selectAccount">
+    {{#each address in Web3.connectedAccounts}}
+      <option value="{{address}}">{{shortHash address size=4}}</option>
+    {{/each}}
+  </select>
+</template>

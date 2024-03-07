@@ -46,18 +46,18 @@ export const Web3Accounts = {
     // Initialize once
     if (!this.provider) {
       const provider = Web3Factory.provider();
-      // EIP-1193
+      //FIXME: EIP-1193
       provider.on('connect', () => this.refresh());
-      // EIP-1193
+      //FIXME: EIP-1193
       provider.on('disconnect', () => {
         this.state.current.set(null);
         this.state.connected.set([]);
       });
-      // EIP-1193
+      //FIXME: EIP-1193
       provider.on('chainChanged', (chainId) =>
         this.state.network.set({ chainId }),
       );
-      // EIP-1193
+      //FIXME: EIP-1193
       provider.on('accountsChanged', () => this.refresh());
       // ???
       provider.on('network', (network) => this.state.network.set(network));

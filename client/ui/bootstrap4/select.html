@@ -1,0 +1,12 @@
+<template name="web3/accountSelect/bootstrap4">
+  <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+      {{shortHash Web3.currentAccount size=4}}
+    </button>
+    <div class="dropdown-menu">
+      {{#each Web3.connectedAccounts}}
+        <a class="dropdown-item" href="#" data-action="selectAccount">{{shortHash this size=4}}</a>
+      {{/each}}
+    </div>
+  </div>
+</template>
