@@ -2,6 +2,23 @@
 
 Basic Web3 API toolkit for Meteor application development.
 
+## Configuration
+
+An isomorphic configuration endpoint is exported to allow fine-tuning the package behavior:
+
+```js
+import { Web3Config } from 'meteor/majus:web3';
+
+Web3Config.set({
+  /**
+   * Currently, the following options are available:
+   * ['default', 'bootstrap4']
+   * With the default value being 'default'
+   */
+  template: 'bootstrap4',
+});
+```
+
 ## Usage (client)
 
 Web3 API wraps Ethers API for convenience:
@@ -59,6 +76,29 @@ Web3Accounts.isConnected; // Boolean
 Web3Accounts.connected; // Array of strings
 Web3Accounts.current; // String
 Web3Accounts.network; // Object
+```
+
+Various Web3 UI template widgets & helpers allow for a quicker UI development:
+
+```html
+<!-- Typical "Connect Wallet" flow -->
+{{#if Web3.isConnected}}
+  <div>{{>Web3.UI.accountSelect}}</div>
+{{else}}
+  <div>Current account: {{shortHash Web3.currentAccount}}</div>
+{{/if}}
+<!-- Other API examples -->
+{{#if Web3.isConnected}}
+  <div>
+    All accounts:
+    <ul>
+      {{#each address in Web3.connectedAccounts}}
+        <li>{{shortHash address size=6}}</li>
+      {{/each}}
+    </ul>
+  </div>
+  <div>Current network: {{Web3.network}}</div>
+{{/if}}
 ```
 
 ## Usage (server)
