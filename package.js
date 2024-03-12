@@ -13,7 +13,7 @@ Npm.depends({
 Package.onUse(function (api) {
   api.versionsFrom('2.0');
   api.use(['ecmascript', 'reactive-var']);
-  api.use(['templating'], 'client');
+  api.use(['templating@1.4.2'], 'client');
   api.mainModule('index.client.js', 'client');
   api.mainModule('index.server.js', 'server');
 });
