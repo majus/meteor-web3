@@ -1,6 +1,6 @@
 Package.describe({
   name: 'majus:web3',
-  version: '0.0.1',
+  version: '0.0.2',
   summary: 'Essential toolkit for web3 application development',
   git: 'https://github.com/majus/meteor-web3',
   documentation: 'README.md',

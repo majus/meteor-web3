@@ -78,6 +78,14 @@ Web3Accounts.current; // String
 Web3Accounts.network; // Object
 ```
 
+Original Ethers API is also available:
+
+```js
+import { ethers } from 'meteor/majus:web3';
+
+ethers.utils.parseUnits('10000000000', 'gwei');
+```
+
 Various Web3 UI template widgets & helpers allow for a quicker UI development:
 
 ```html
@@ -134,4 +142,12 @@ const provider = Web3Factory.provider();
  * @see https://docs.ethers.org/v5/api/signer/#Wallet
  */
 const signer = Web3Factory.signer();
+```
+
+Original Ethers API is also available:
+
+```js
+import { ethers } from 'meteor/majus:web3';
+
+ethers.utils.parseUnits('10000000000', 'gwei');
 ```
