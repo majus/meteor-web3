@@ -16,8 +16,9 @@ ejson@1.1.3
 fetch@0.1.4
 html-tools@1.1.3
 htmljs@1.1.1
+imajus:helpers-core@0.1.0
 inter-process-messaging@0.1.1
-majus:web3@0.0.2
+majus:web3@0.1.0
 meteor@1.11.5
 modern-browsers@0.1.10
 modules@0.20.0

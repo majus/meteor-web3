@@ -1,6 +1,6 @@
 Package.describe({
   name: 'majus:web3',
-  version: '0.0.2',
+  version: '0.1.0',
   summary: 'Essential toolkit for web3 application development',
   git: 'https://github.com/majus/meteor-web3',
   documentation: 'README.md',
@@ -11,9 +11,9 @@ Npm.depends({
 });
 
 Package.onUse(function (api) {
-  api.versionsFrom('2.0');
+  api.versionsFrom(['2.0', '3.0']);
   api.use(['ecmascript', 'reactive-var']);
-  api.use(['templating@1.4.2'], 'client');
+  api.use(['templating@1.3.4||1.4.4', 'imajus:helpers-core@0.0.2||0.1.0'], 'client');
   api.mainModule('index.client.js', 'client');
   api.mainModule('index.server.js', 'server');
 });
